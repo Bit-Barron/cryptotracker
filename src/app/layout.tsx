@@ -1,5 +1,7 @@
 import QueryProvider from "@/components/providers/query-provider";
 import "./globals.css";
+import { ModeToggle } from "@/components/ui/theme-toggle";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export default function RootLayout({
   children,
@@ -7,9 +9,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <QueryProvider>{children}</QueryProvider>
+        <NextThemesProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ModeToggle />
+          <QueryProvider>{children}</QueryProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
