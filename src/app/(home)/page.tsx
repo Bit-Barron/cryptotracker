@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { CoinHook } from "@/components/hooks/coin-hook";
 import Image from "next/image";
 import {
@@ -12,10 +11,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
+import { searchStore } from "@/store/SearchStore";
+import { useRouter } from "next/navigation";
 
 export default function CryptoTable() {
   const { coinQuery } = CoinHook();
-  const [searchTerm, setSearchTerm] = useState("");
+  const { searchTerm, setSearchTerm } = searchStore();
+  const router = useRouter();
 
   const filteredCoins = coinQuery?.data?.filter(
     (coin) =>
@@ -45,7 +47,7 @@ export default function CryptoTable() {
         </TableHeader>
         <TableBody>
           {filteredCoins?.map((coin) => (
-            <TableRow key={coin.id}>
+            <TableRow key={coin.id} onClick={() => router.push(`/${coin.id}`)}>
               <TableCell className="font-medium">
                 <div className="flex items-center gap-2">
                   <Image
