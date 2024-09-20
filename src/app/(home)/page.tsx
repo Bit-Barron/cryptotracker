@@ -54,6 +54,7 @@ export default function CryptoTable() {
                     width={24}
                     height={24}
                     className="rounded-full"
+                    unoptimized
                   />
                   <span>{coin.name}</span>
                   <span className="text-muted-foreground">
