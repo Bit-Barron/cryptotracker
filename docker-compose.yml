@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  cryptotrack:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: cryptotrack
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cryptotrack.rule=Host(`cryptotrack.barron.agency`)"
+      - "traefik.http.routers.cryptotrack.entrypoints=websecure"
+      - "traefik.http.routers.cryptotrack.tls.certresolver=letsencrypt"
+      - "traefik.http.services.cryptotrack.loadbalancer.server.port=3000"
+
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: false
+    name: proxy
