@@ -1,7 +1,7 @@
 import QueryProvider from "@/components/providers/query-provider";
 import "./globals.css";
-import { ModeToggle } from "@/components/ui/theme-toggle";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { Navbar } from "@/components/elements/navbar";
 
 export default function RootLayout({
   children,
@@ -17,7 +17,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
+          <Navbar />
           <QueryProvider>{children}</QueryProvider>
         </NextThemesProvider>
       </body>

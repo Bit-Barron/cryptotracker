@@ -13,11 +13,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { searchStore } from "@/store/SearchStore";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function CryptoTable() {
   const { coinQuery } = CoinHook();
   const { searchTerm, setSearchTerm } = searchStore();
   const router = useRouter();
+  const t = useTranslations("HomePage");
 
   const filteredCoins = coinQuery?.data?.filter(
     (coin) =>
@@ -27,13 +29,14 @@ export default function CryptoTable() {
 
   return (
     <div className="container mx-auto p-4 space-y-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Crypto Dashboard</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">{t("title")}</h1>
       <Input
         type="text"
         placeholder="Search coins..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -84,6 +87,9 @@ export default function CryptoTable() {
           ))}
         </TableBody>
       </Table>
+      {!coinQuery.data && (
+        <div className="flex justify-center items-center">No Coins</div>
+      )}
     </div>
   );
 }

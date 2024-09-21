@@ -13,49 +13,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { DeveloperData } from "@/components/elements/developer-data";
+import { AdditionalInformation } from "@/components/elements/additional-information";
+import { MarketData } from "@/components/elements/market-data";
+import { PriceChanges } from "@/components/elements/price-changes";
 
 export default function CoinInfoPage() {
   const { coinIdQuery } = CoinHook();
   const coin = coinIdQuery.data;
-
-  const priceData = [
-    {
-      name: "1h",
-      value: coin?.market_data.price_change_percentage_1h_in_currency?.usd || 0,
-    },
-    {
-      name: "24h",
-      value:
-        coin?.market_data.price_change_percentage_24h_in_currency?.usd || 0,
-    },
-    {
-      name: "7d",
-      value: coin?.market_data.price_change_percentage_7d_in_currency?.usd || 0,
-    },
-    {
-      name: "14d",
-      value:
-        coin?.market_data.price_change_percentage_14d_in_currency?.usd || 0,
-    },
-    {
-      name: "30d",
-      value:
-        coin?.market_data.price_change_percentage_30d_in_currency?.usd || 0,
-    },
-    {
-      name: "1y",
-      value: coin?.market_data.price_change_percentage_1y_in_currency?.usd || 0,
-    },
-  ];
 
   return (
     <div className="container mx-auto p-4">
@@ -156,56 +121,7 @@ export default function CoinInfoPage() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="market-data">
-          <Card>
-            <CardHeader>
-              <CardTitle>Market Data</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-sm font-medium">Market Cap:</p>
-                  <p className="text-xl font-bold">
-                    ${coin?.market_data.market_cap.usd.toLocaleString()}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">24h Trading Volume:</p>
-                  <p className="text-xl font-bold">
-                    ${coin?.market_data.total_volume.usd.toLocaleString()}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Circulating Supply:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.market_data.circulating_supply.toLocaleString()}{" "}
-                    {coin?.symbol.toUpperCase()}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Max Supply:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.market_data.max_supply
-                      ? coin?.market_data.max_supply.toLocaleString()
-                      : "N/A"}{" "}
-                    {coin?.symbol.toUpperCase()}
-                  </p>
-                </div>
-              </div>
-              <div className="h-[300px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={priceData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="value" stroke="#8884d8" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        <MarketData coin={coin} />
 
         <TabsContent value="social">
           <Card>
@@ -247,68 +163,10 @@ export default function CoinInfoPage() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="developer">
-          <Card>
-            <CardHeader>
-              <CardTitle>Developer Data</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm font-medium">Forks:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.forks}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Stars:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.stars}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Subscribers:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.subscribers}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Total Issues:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.total_issues}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Closed Issues:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.closed_issues}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Pull Requests Merged:</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.pull_requests_merged}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">
-                    Pull Request Contributors:
-                  </p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.pull_request_contributors}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Commit Count (4 weeks):</p>
-                  <p className="text-xl font-bold">
-                    {coin?.developer_data.commit_count_4_weeks}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        <DeveloperData coin={coin} />
       </Tabs>
+      <AdditionalInformation />
+      <PriceChanges coin={coin} />
     </div>
   );
 }
