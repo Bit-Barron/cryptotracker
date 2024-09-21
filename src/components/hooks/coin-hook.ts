@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 
 export const CoinHook = () => {
   const params = useParams();
+
   const coinQuery = useQuery<CoinData[]>({
     queryKey: ["coin"],
     queryFn: async () => {
@@ -14,6 +15,8 @@ export const CoinHook = () => {
       }
       return response.json();
     },
+    staleTime: 60000, // 1 minute
+    refetchOnWindowFocus: false,
   });
 
   const coinIdQuery = useQuery<CoinIdData>({
@@ -27,6 +30,9 @@ export const CoinHook = () => {
       }
       return response.json();
     },
+    enabled: !!params.coinId,
+    staleTime: 60000,
+    refetchOnWindowFocus: false,
   });
 
   return {

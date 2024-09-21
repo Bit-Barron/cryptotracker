@@ -1,6 +1,6 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TabsContent } from "@radix-ui/react-tabs";
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 
 interface DeveloperDataProps {
   coin?: CoinIdData;

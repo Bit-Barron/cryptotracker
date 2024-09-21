@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 
 interface AdditionalInformationProps {
   coin?: CoinIdData;

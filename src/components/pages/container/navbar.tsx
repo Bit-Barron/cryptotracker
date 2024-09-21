@@ -1,24 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { LanguageStore } from "@/store/LanguageStore";
+import { ModeToggle } from "@/components/ui/theme-toggle";
+import LocaleSwitcher from "@/components/utils/locale-switcher";
+import { Link } from "@/navigation";
 import { NavbarStore } from "@/store/NavbarStore";
-import { Globe, Menu } from "lucide-react";
-import { ModeToggle } from "../../ui/theme-toggle";
-import LocaleSwitcher from "../../utils/locale-switcher";
+import { Menu } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const { languages, currentLanguage, setCurrentLanguage } = LanguageStore();
   const { tabs } = NavbarStore();
-  const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("Navbar");
 
   return (
     <nav className="bg-background shadow w-full x-4 sm:px-6 lg:px-8">
@@ -26,40 +20,22 @@ export const Navbar = () => {
         <div className="flex">
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
             {tabs.map((tab) => (
-              <a
+              <Link
                 key={tab.title}
                 href={tab.link}
-                className="text-muted-foreground hover:text-primary hover:border-primary border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                // TODO display the current tab with an underline
+                className={`text-muted-foreground ${
+                  tab.current ? "border-primary text-primary" : ""
+                } hover:text-primary hover:border-primary border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
               >
-                {tab.title}
-              </a>
+                {t(tab.title)}
+              </Link>
             ))}
           </div>
         </div>
         <div className="hidden sm:ml-6 sm:flex sm:items-center">
           <ModeToggle />
-          <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>
-                <Globe className="h-[1.2rem] w-[1.2rem] mr-2" />
-                {currentLanguage}
-              </Button>
-            </DropdownMenuTrigger>
-            {/* <DropdownMenuContent align="end">
-              {languages.map((lang) => (
-                <DropdownMenuItem
-                  key={lang}
-                  onClick={() => {
-                    setCurrentLanguage(lang);
-                    setIsOpen(false);
-                  }}
-                >
-                  {lang}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent> */}
-            <LocaleSwitcher />
-          </DropdownMenu>
+          <LocaleSwitcher />
         </div>
         <div className="-mr-2 flex items-center sm:hidden">
           <Button
@@ -89,28 +65,7 @@ export const Navbar = () => {
           </div>
           <div className="pt-4 pb-3 border-t border-accent">
             <div className="flex items-center px-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full justify-start"
-                  >
-                    <Globe className="mr-2 h-4 w-4" />
-                    {languages}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  {languages.map((lang) => (
-                    <DropdownMenuItem
-                      key={lang}
-                      onClick={() => setCurrentLanguage(lang)}
-                    >
-                      {lang}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <LocaleSwitcher />
             </div>
           </div>
         </div>

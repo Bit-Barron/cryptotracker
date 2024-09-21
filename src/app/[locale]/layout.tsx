@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/pages/container/navbar";
+import QueryProvider from "@/components/providers/query-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
@@ -12,14 +13,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages} locale={locale}>
+      <QueryProvider>
+        <Navbar />
+        {children}
+      </QueryProvider>
+    </NextIntlClientProvider>
   );
 }

@@ -1,9 +1,19 @@
 {
+  "LocaleSwitcher": {
+    "label": "Sprache ändern",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+  },
   "HomePage": {
     "title": "Dashboard",
-    "about": "Go to the about page"
+    "about": "Zur Über-uns-Seite"
   },
-  "LocaleSwitcher": {
-    "label": "Sprache ändern"
+  "Navbar": {
+    "Home": "Startseite",
+    "Contact": "Kontakt",
+    "Discord": "Discord",
+    "locale": {
+      "de": "Deutsch",
+      "en": "Englisch"
+    }
   }
 }

@@ -1,7 +1,12 @@
 "use client";
 
 import { CoinHook } from "@/components/hooks/coin-hook";
-import React from "react";
+import { AdditionalInformation } from "@/components/pages/home/additional-information";
+import { DeveloperData } from "@/components/pages/home/developer-data";
+import { MarketData } from "@/components/pages/home/market-data";
+import { PriceChanges } from "@/components/pages/home/price-changes";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -9,14 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { DeveloperData } from "@/components/pages/developer-data";
-import { AdditionalInformation } from "@/components/pages/additional-information";
-import { MarketData } from "@/components/pages/market-data";
-import { PriceChanges } from "@/components/pages/price-changes";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function CoinInfoPage() {
   const { coinIdQuery } = CoinHook();

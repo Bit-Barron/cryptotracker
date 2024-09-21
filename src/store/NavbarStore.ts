@@ -1,6 +1,5 @@
+import { HouseIcon, LucideIcon, UserIcon } from "lucide-react";
 import { create } from "zustand";
-import { UserIcon, HouseIcon } from "lucide-react";
-import { LucideIcon } from "lucide-react";
 
 interface TabProps {
   title: string;

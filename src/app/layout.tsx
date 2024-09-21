@@ -1,6 +1,5 @@
-import QueryProvider from "@/components/providers/query-provider";
-import "./globals.css";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -8,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body>
         <NextThemesProvider
           attribute="class"
@@ -16,7 +15,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryProvider>{children}</QueryProvider>
+          {children}
         </NextThemesProvider>
       </body>
     </html>

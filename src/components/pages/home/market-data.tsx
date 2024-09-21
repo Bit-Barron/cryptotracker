@@ -1,51 +1,23 @@
-import { TabsContent } from "@radix-ui/react-tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TabsContent } from "@/components/ui/tabs";
+import { getPriceData } from "@/utils/constants";
 import React from "react";
 import {
-  ResponsiveContainer,
-  LineChart,
   CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Line,
 } from "recharts";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 
 interface MarketDataProps {
   coin?: CoinIdData;
 }
 
 export const MarketData: React.FC<MarketDataProps> = ({ coin }) => {
-  const priceData = [
-    {
-      name: "1h",
-      value: coin?.market_data.price_change_percentage_1h_in_currency?.usd || 0,
-    },
-    {
-      name: "24h",
-      value:
-        coin?.market_data.price_change_percentage_24h_in_currency?.usd || 0,
-    },
-    {
-      name: "7d",
-      value: coin?.market_data.price_change_percentage_7d_in_currency?.usd || 0,
-    },
-    {
-      name: "14d",
-      value:
-        coin?.market_data.price_change_percentage_14d_in_currency?.usd || 0,
-    },
-    {
-      name: "30d",
-      value:
-        coin?.market_data.price_change_percentage_30d_in_currency?.usd || 0,
-    },
-    {
-      name: "1y",
-      value: coin?.market_data.price_change_percentage_1y_in_currency?.usd || 0,
-    },
-  ];
-
+  const priceData = getPriceData(coin);
   return (
     <TabsContent value="market-data">
       <Card>

@@ -1,7 +1,7 @@
 "use client";
 
 import { CoinHook } from "@/components/hooks/coin-hook";
-import Image from "next/image";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -10,10 +10,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import { searchStore } from "@/store/SearchStore";
 import { useRouter } from "@/navigation";
+import { searchStore } from "@/store/SearchStore";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function CryptoTable() {
   const { coinQuery } = CoinHook();
@@ -27,6 +27,8 @@ export default function CryptoTable() {
       coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  //TODO: Use Tanstack for the table
+
   return (
     <div className="container mx-auto p-4 space-y-4">
       <h1 className="text-3xl font-bold text-center mb-6">{t("title")}</h1>
@@ -36,7 +38,6 @@ export default function CryptoTable() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
       <Table>
         <TableHeader>
           <TableRow>
