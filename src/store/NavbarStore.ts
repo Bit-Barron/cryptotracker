@@ -1,4 +1,4 @@
-import { HouseIcon, LucideIcon, UserIcon } from "lucide-react";
+import { HouseIcon, LucideIcon } from "lucide-react";
 import { create } from "zustand";
 
 interface TabProps {
@@ -17,7 +17,6 @@ interface NavbarStore {
 
 const predefinedTabs: TabProps[] = [
   { title: "Home", link: "/", icon: HouseIcon, current: true },
-  { title: "Contact", link: "/contact", icon: UserIcon, current: false },
   {
     title: "Discord",
     link: "https://discord.com/invite/coding",
