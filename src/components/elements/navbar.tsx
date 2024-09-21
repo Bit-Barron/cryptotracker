@@ -18,6 +18,7 @@ export const Navbar = () => {
   const { languages, currentLanguage, setCurrentLanguage } = LanguageStore();
   const { tabs } = NavbarStore();
   const [isOpen, setIsOpen] = useState(false);
+  
 
   return (
     <nav className="bg-background shadow w-full x-4 sm:px-6 lg:px-8">
