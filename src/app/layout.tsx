@@ -1,7 +1,6 @@
 import QueryProvider from "@/components/providers/query-provider";
 import "./globals.css";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { Navbar } from "@/components/elements/navbar";
 
 export default function RootLayout({
   children,
@@ -17,7 +16,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
           <QueryProvider>{children}</QueryProvider>
         </NextThemesProvider>
       </body>

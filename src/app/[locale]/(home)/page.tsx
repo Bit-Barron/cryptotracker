@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { searchStore } from "@/store/SearchStore";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/navigation";
 import { useTranslations } from "next-intl";
 
 export default function CryptoTable() {
@@ -50,7 +50,10 @@ export default function CryptoTable() {
         </TableHeader>
         <TableBody>
           {filteredCoins?.map((coin) => (
-            <TableRow key={coin.id} onClick={() => router.push(`/${coin.id}`)}>
+            <TableRow
+              key={coin.id}
+              onClick={() => router.push(`/coin/${coin.id}`)}
+            >
               <TableCell className="font-medium">
                 <div className="flex items-center gap-2">
                   <Image

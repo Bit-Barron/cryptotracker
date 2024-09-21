@@ -2,5 +2,9 @@
   "HomePage": {
     "title": "Dashboard",
     "about": "Go to the about page"
+  },
+  "LocaleSwitcher": {
+    "label": "Change Language",
+    "locale": "{locale, select, de {German} en {English} other {Unknown}}"
   }
 }

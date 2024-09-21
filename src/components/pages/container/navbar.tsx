@@ -7,18 +7,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe, Menu } from "lucide-react";
-import { useState } from "react";
-import { ModeToggle } from "../ui/theme-toggle";
 import { LanguageStore } from "@/store/LanguageStore";
 import { NavbarStore } from "@/store/NavbarStore";
+import { Globe, Menu } from "lucide-react";
+import { ModeToggle } from "../../ui/theme-toggle";
+import LocaleSwitcher from "../../utils/locale-switcher";
+import { useState } from "react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { languages, currentLanguage, setCurrentLanguage } = LanguageStore();
   const { tabs } = NavbarStore();
   const [isOpen, setIsOpen] = useState(false);
-  
 
   return (
     <nav className="bg-background shadow w-full x-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@ export const Navbar = () => {
                 {currentLanguage}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            {/* <DropdownMenuContent align="end">
               {languages.map((lang) => (
                 <DropdownMenuItem
                   key={lang}
@@ -57,7 +57,8 @@ export const Navbar = () => {
                   {lang}
                 </DropdownMenuItem>
               ))}
-            </DropdownMenuContent>
+            </DropdownMenuContent> */}
+            <LocaleSwitcher />
           </DropdownMenu>
         </div>
         <div className="-mr-2 flex items-center sm:hidden">

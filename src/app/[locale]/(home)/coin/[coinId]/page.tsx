@@ -13,10 +13,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { DeveloperData } from "@/components/elements/developer-data";
-import { AdditionalInformation } from "@/components/elements/additional-information";
-import { MarketData } from "@/components/elements/market-data";
-import { PriceChanges } from "@/components/elements/price-changes";
+import { DeveloperData } from "@/components/pages/developer-data";
+import { AdditionalInformation } from "@/components/pages/additional-information";
+import { MarketData } from "@/components/pages/market-data";
+import { PriceChanges } from "@/components/pages/price-changes";
 
 export default function CoinInfoPage() {
   const { coinIdQuery } = CoinHook();
