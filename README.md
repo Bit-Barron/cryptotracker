@@ -85,5 +85,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 Barron - Discord: https://discord.com/invite/coding 
-
-Project Link: [https://github.com/yourusername/crypto-tracker-pro](https://github.com/Bit-Barron/cryptotracker/)
