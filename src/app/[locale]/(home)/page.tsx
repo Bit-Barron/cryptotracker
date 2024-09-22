@@ -39,13 +39,9 @@ export default function CryptoTable() {
       coin.symbol?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
   const handleSortChange = (newSortOrder: string) => {
     setSortOrder(newSortOrder);
-    setCurrentPage(1); // Reset to first page when changing sort order
+    setCurrentPage(1);
   };
 
   return (
@@ -130,7 +126,7 @@ export default function CryptoTable() {
         <MyPagination
           currentPage={currentPage}
           totalPages={20}
-          onPageChange={handlePageChange}
+          onPageChange={(p) => setCurrentPage(p)}
         />
       </div>
       {coinQuery.isLoading && <div>Loading...</div>}

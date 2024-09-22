@@ -18,8 +18,6 @@ export const CoinHook = (
       }
       return response.json();
     },
-    staleTime: 60000,
-    refetchOnWindowFocus: false,
   });
 
   const coinIdQuery = useQuery<CoinIdData>({
