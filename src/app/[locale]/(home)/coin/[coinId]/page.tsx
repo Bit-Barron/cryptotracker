@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl"; // Import the translation hook
 
 export default function CoinInfoPage() {
   const { coinIdQuery } = CoinHook();
@@ -35,52 +35,61 @@ export default function CoinInfoPage() {
       )}
 
       {coinIdQuery.isLoading && <div>{t("loading")}</div>}
-      <Card className="mb-8">
-        <CardHeader className="flex flex-row items-center space-y-0 pb-2">
-          <Avatar className="h-16 w-16 mr-4">
-            <AvatarImage src={coin?.image.large} alt={coin?.name} />
-            <AvatarFallback>{coin?.symbol.toUpperCase()}</AvatarFallback>
-          </Avatar>
-          <div>
-            <CardTitle className="text-2xl">{coin?.name}</CardTitle>
-            <CardDescription>{coin?.symbol.toUpperCase()}</CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 gap-4">
+
+      {coin && (
+        <Card className="mb-8">
+          <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+            <Avatar className="h-16 w-16 mr-4">
+              <AvatarImage src={coin?.image.large} alt={coin?.name} />
+              <AvatarFallback>{coin?.symbol.toUpperCase()}</AvatarFallback>
+            </Avatar>
             <div>
-              <p className="text-sm font-medium">Current Price:</p>
-              <p className="text-2xl font-bold">
-                ${coin?.market_data.current_price.usd.toLocaleString()}
-              </p>
+              <CardTitle className="text-2xl">{coin?.name}</CardTitle>
+              <CardDescription>{coin?.symbol.toUpperCase()}</CardDescription>
             </div>
-            <div>
-              <p className="text-sm font-medium">Market Cap Rank:</p>
-              <p className="text-2xl font-bold">#{coin?.market_cap_rank}</p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm font-medium">
+                  {t("CoinData.currentPrice")}:
+                </p>
+                <p className="text-2xl font-bold">
+                  ${coin?.market_data.current_price.usd.toLocaleString()}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">
+                  {t("CoinData.marketCapRank")}:
+                </p>
+                <p className="text-2xl font-bold">#{coin?.market_cap_rank}</p>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
 
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="market-data">Market Data</TabsTrigger>
-          <TabsTrigger value="social">Social</TabsTrigger>
-          <TabsTrigger value="developer">Developer</TabsTrigger>
+          <TabsTrigger value="overview">{t("Tabs.overview")}</TabsTrigger>
+          <TabsTrigger value="market-data">{t("Tabs.marketData")}</TabsTrigger>
+          <TabsTrigger value="social">{t("Tabs.social")}</TabsTrigger>
+          <TabsTrigger value="developer">{t("Tabs.developer")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview">
           <Card>
             <CardHeader>
-              <CardTitle>Overview</CardTitle>
+              <CardTitle>{t("Tabs.overview")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ScrollArea className="h-[400px] w-full rounded-md border p-4">
                 <p className="mb-4">{coin?.description.en}</p>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <h3 className="font-semibold">Categories:</h3>
+                    <h3 className="font-semibold">
+                      {t("CoinData.categories")}:
+                    </h3>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {coin?.categories.map((category, index) => (
                         <Badge key={index} variant="secondary">
@@ -90,7 +99,7 @@ export default function CoinInfoPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Links:</h3>
+                    <h3 className="font-semibold">{t("CoinData.links")}:</h3>
                     <ul className="list-disc list-inside mt-2">
                       <li>
                         <a
@@ -99,7 +108,7 @@ export default function CoinInfoPage() {
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"
                         >
-                          Website
+                          {t("CoinData.website")}
                         </a>
                       </li>
                       <li>
@@ -135,25 +144,29 @@ export default function CoinInfoPage() {
         <TabsContent value="social">
           <Card>
             <CardHeader>
-              <CardTitle>Social Data</CardTitle>
+              <CardTitle>{t("Tabs.socialData")}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm font-medium">Twitter Followers:</p>
+                  <p className="text-sm font-medium">
+                    {t("SocialData.twitterFollowers")}:
+                  </p>
                   <p className="text-xl font-bold">
                     {coin?.community_data.twitter_followers.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Reddit Subscribers:</p>
+                  <p className="text-sm font-medium">
+                    {t("SocialData.redditSubscribers")}:
+                  </p>
                   <p className="text-xl font-bold">
                     {coin?.community_data.reddit_subscribers.toLocaleString()}
                   </p>
                 </div>
                 <div>
                   <p className="text-sm font-medium">
-                    Reddit Average Posts (48h):
+                    {t("SocialData.redditAvgPosts")}:
                   </p>
                   <p className="text-xl font-bold">
                     {coin?.community_data.reddit_average_posts_48h}
@@ -161,7 +174,7 @@ export default function CoinInfoPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium">
-                    Reddit Average Comments (48h):
+                    {t("SocialData.redditAvgComments")}:
                   </p>
                   <p className="text-xl font-bold">
                     {coin?.community_data.reddit_average_comments_48h}
