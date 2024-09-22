@@ -10,8 +10,9 @@ export const CoinHook = (
 
   const coinQuery = useQuery<CoinData[]>({
     queryKey: ["coin", sortOrder, page],
-    enabled: false,
     queryFn: () => fetchCoins(sortOrder, page),
+    enabled: !!sortOrder && !!page,
+    staleTime: 60000,
   });
 
   const coinIdQuery = useQuery<CoinIdData>({

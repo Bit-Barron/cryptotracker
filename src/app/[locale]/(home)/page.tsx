@@ -31,9 +31,9 @@ export default function CryptoTable() {
   const { coinQuery } = CoinHook(sortOrder, currentPage);
   const { searchTerm, setSearchTerm } = searchStore();
   const router = useRouter();
-  const t = useTranslations("HomePage");
+  const t = useTranslations();
 
-  const coins = coinQuery?.data ?? [];
+  const coins = Array.isArray(coinQuery?.data) ? coinQuery.data : [];
   const filteredCoins = coins.filter(
     (coin) =>
       coin.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -47,18 +47,20 @@ export default function CryptoTable() {
 
   return (
     <div className="container mx-auto p-4 space-y-4">
-      <h1 className="text-3xl font-bold text-center mb-6">{t("title")}</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">
+        {t("HomePage.title")}
+      </h1>
       <div className="flex gap-4">
         <Input
           type="text"
-          placeholder="Search coins..."
+          placeholder={t("CryptoTable.searchPlaceholder")}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-grow"
         />
         <Select value={sortOrder} onValueChange={handleSortChange}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Sort by" />
+            <SelectValue placeholder={t("CryptoTable.sortByPlaceholder")} />
           </SelectTrigger>
           <SelectContent>
             {sortOptions.map((option) => (
@@ -72,12 +74,12 @@ export default function CryptoTable() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Coin</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>24h Change</TableHead>
-            <TableHead>Market Cap</TableHead>
-            <TableHead>Volume</TableHead>
-            <TableHead>Supply</TableHead>
+            <TableHead>{t("CryptoTable.coin")}</TableHead>
+            <TableHead>{t("CryptoTable.price")}</TableHead>
+            <TableHead>{t("CryptoTable.24hChange")}</TableHead>
+            <TableHead>{t("CryptoTable.marketCap")}</TableHead>
+            <TableHead>{t("CryptoTable.volume")}</TableHead>
+            <TableHead>{t("CryptoTable.supply")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -130,10 +132,15 @@ export default function CryptoTable() {
           onPageChange={(p) => setCurrentPage(p)}
         />
       </div>
-      {coinQuery.isLoading && <div>Loading...</div>}
-      {coinQuery.isError && <div>Error loading data</div>}
+      {coinQuery.isLoading && <div>{t("loading")}</div>}
+      {coinQuery.isError && <div>{t("error")}</div>}
       {!coins.length && !coinQuery.isLoading && (
-        <div className="flex justify-center items-center">No Coins</div>
+        <div className="text-center py-4">
+          <h2 className="text-xl font-semibold">{t("NoCoins.title")}</h2>
+          <p className="text-muted-foreground mt-2">
+            {t("NoCoins.description")}
+          </p>
+        </div>
       )}
     </div>
   );

@@ -1,12 +1,9 @@
-export const fetchCoins = async (
-  sortOrder: string = "market_cap_desc",
-  page: number = 1
-) => {
-  const response = await fetch(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=${sortOrder}&per_page=50&page=${page}&sparkline=false`
+export const fetchCoins = async (sortOrder = "market_cap_desc", page = 1) => {
+  const res = await fetch(
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=${sortOrder}&page=${page}`
   );
 
-  return response.json();
+  return res.json();
 };
 
 export const fetchCoinData = async (coinId?: string): Promise<CoinIdData> => {

@@ -16,15 +16,25 @@ import {
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslations } from "next-intl";
 
 export default function CoinInfoPage() {
   const { coinIdQuery } = CoinHook();
   const coin = coinIdQuery.data;
+  const t = useTranslations();
 
   return (
     <div className="container mx-auto p-4">
-      {!coin && <div>No Coin</div>}
-      {coinIdQuery.isLoading && <div>Loading...</div>}
+      {!coin && (
+        <div className="text-center py-4">
+          <h2 className="text-xl font-semibold">{t("NoCoins.title")}</h2>
+          <p className="text-muted-foreground mt-2">
+            {t("NoCoins.description")}
+          </p>
+        </div>
+      )}
+
+      {coinIdQuery.isLoading && <div>{t("loading")}</div>}
       <Card className="mb-8">
         <CardHeader className="flex flex-row items-center space-y-0 pb-2">
           <Avatar className="h-16 w-16 mr-4">

@@ -32,12 +32,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="">{children}</main>
-          <footer className="bg-primary text-primary-foreground py-4 mt-8">
-            <div className="container mx-auto text-center">
-              <p>&copy; 2023 CryptoTrack Pro. All rights reserved.</p>
-            </div>
-          </footer>
+          <main>{children}</main>
         </NextThemesProvider>
       </body>
     </html>

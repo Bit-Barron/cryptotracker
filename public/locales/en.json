@@ -7,6 +7,11 @@
     "title": "Dashboard",
     "about": "Go to the about page"
   },
+  "loading": "Loading...",
+  "NoCoins": {
+    "title": "No coins found",
+    "description": "No coins found. Please try again later."
+  },
   "Navbar": {
     "Home": "Home",
     "Contact": "Contact",
@@ -15,5 +20,16 @@
       "de": "German",
       "en": "English"
     }
+  },
+  "CryptoTable": {
+    "title": "Cryptocurrency Table",
+    "searchPlaceholder": "Search coins...",
+    "sortByPlaceholder": "Sort by",
+    "coin": "Coin",
+    "price": "Price",
+    "24hChange": "24h Change",
+    "marketCap": "Market Cap",
+    "volume": "Volume",
+    "supply": "Supply"
   }
 }

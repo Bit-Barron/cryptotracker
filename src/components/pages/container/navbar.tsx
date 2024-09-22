@@ -12,7 +12,7 @@ import { useState } from "react";
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { tabs } = NavbarStore();
-  const t = useTranslations("Navbar");
+  const t = useTranslations();
 
   return (
     <nav className="bg-background shadow w-full x-4 sm:px-6 lg:px-8">
@@ -27,7 +27,7 @@ export const Navbar = () => {
                   tab.current ? "border-primary text-primary" : ""
                 } hover:text-primary hover:border-primary border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
               >
-                {t(tab.title)}
+                {t(`Navbar.${tab.title}`)}
               </Link>
             ))}
           </div>

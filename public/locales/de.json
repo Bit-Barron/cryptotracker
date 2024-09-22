@@ -7,6 +7,11 @@
     "title": "Dashboard",
     "about": "Zur Über-uns-Seite"
   },
+  "loading": "Laden...",
+  "NoCoins": {
+    "title": "Keine Münzen gefunden",
+    "description": "Keine Münzen gefunden. Bitte versuchen Sie es später erneut."
+  },
   "Navbar": {
     "Home": "Startseite",
     "Contact": "Kontakt",
@@ -15,5 +20,16 @@
       "de": "Deutsch",
       "en": "Englisch"
     }
+  },
+  "CryptoTable": {
+    "title": "Kryptowährungen-Tabelle",
+    "searchPlaceholder": "Münzen suchen...",
+    "sortByPlaceholder": "Sortieren nach",
+    "coin": "Münze",
+    "price": "Preis",
+    "24hChange": "24h Änderung",
+    "marketCap": "Marktkapitalisierung",
+    "volume": "Volumen",
+    "supply": "Umlaufmenge"
   }
 }
