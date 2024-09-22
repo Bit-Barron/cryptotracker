@@ -33,7 +33,8 @@ export default function CryptoTable() {
   const router = useRouter();
   const t = useTranslations("HomePage");
 
-  const filteredCoins = coinQuery?.data?.filter(
+  const coins = coinQuery?.data ?? [];
+  const filteredCoins = coins.filter(
     (coin) =>
       coin.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       coin.symbol?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -80,7 +81,7 @@ export default function CryptoTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredCoins?.map((coin) => (
+          {filteredCoins.map((coin) => (
             <TableRow
               key={coin.id}
               onClick={() => router.push(`/coin/${coin?.id}`)}
@@ -131,7 +132,7 @@ export default function CryptoTable() {
       </div>
       {coinQuery.isLoading && <div>Loading...</div>}
       {coinQuery.isError && <div>Error loading data</div>}
-      {!coinQuery.data && !coinQuery.isLoading && (
+      {!coins.length && !coinQuery.isLoading && (
         <div className="flex justify-center items-center">No Coins</div>
       )}
     </div>

@@ -1,3 +1,4 @@
+import { fetchCoins } from "@/lib/fetch-coins";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
@@ -9,15 +10,8 @@ export const CoinHook = (
 
   const coinQuery = useQuery<CoinData[]>({
     queryKey: ["coin", sortOrder, page],
-    queryFn: async () => {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=${sortOrder}&per_page=50&page=${page}&sparkline=false`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    },
+    enabled: false,
+    queryFn: () => fetchCoins(sortOrder, page),
   });
 
   const coinIdQuery = useQuery<CoinIdData>({
