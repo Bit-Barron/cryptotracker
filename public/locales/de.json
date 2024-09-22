@@ -36,7 +36,8 @@
     "overview": "Überblick",
     "marketData": "Marktdaten",
     "social": "Sozial",
-    "developer": "Entwickler"
+    "developer": "Entwickler",
+    "socialData": "Soziale Daten"
   },
   "CoinData": {
     "currentPrice": "Aktueller Preis",
@@ -82,7 +83,15 @@
     "1h": "1 Stunde",
     "24h": "24 Stunden",
     "7d": "7 Tage",
+    "14d": "14 Tage",
     "30d": "30 Tage",
     "1y": "1 Jahr"
+  },
+  "MarketData": {
+    "title": "Marktdaten",
+    "marketCap": "Marktkapitalisierung",
+    "tradingVolume": "24h Handelsvolumen",
+    "circulatingSupply": "Umlaufmenge",
+    "maxSupply": "Maximale Menge"
   }
 }
