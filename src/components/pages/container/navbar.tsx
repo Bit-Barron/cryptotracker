@@ -23,7 +23,6 @@ export const Navbar = () => {
               <Link
                 key={tab.title}
                 href={tab.link}
-                // TODO display the current tab with an underline
                 className={`text-muted-foreground ${
                   tab.current ? "border-primary text-primary" : ""
                 } hover:text-primary hover:border-primary border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
