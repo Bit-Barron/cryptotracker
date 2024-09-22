@@ -133,7 +133,6 @@ export default function CryptoTable() {
         />
       </div>
       {coinQuery.isLoading && <div>{t("loading")}</div>}
-      {coinQuery.isError && <div>{t("error")}</div>}
       {!coins.length && !coinQuery.isLoading && (
         <div className="text-center py-4">
           <h2 className="text-xl font-semibold">{t("NoCoins.title")}</h2>
