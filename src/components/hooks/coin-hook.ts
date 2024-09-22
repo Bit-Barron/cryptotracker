@@ -15,7 +15,7 @@ export const CoinHook = () => {
       }
       return response.json();
     },
-    staleTime: 60000, // 1 minute
+    staleTime: 60000,
     refetchOnWindowFocus: false,
   });
 

@@ -1,9 +1,16 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { usePathname, useRouter } from "@/navigation";
-import clsx from "clsx";
 import { useParams } from "next/navigation";
-import { ChangeEvent, ReactNode, useTransition } from "react";
+import React, { ReactNode, useTransition } from "react";
 
 type Props = {
   children: ReactNode;
@@ -21,8 +28,7 @@ export default function LocaleSwitcherSelect({
   const pathname = usePathname();
   const params = useParams();
 
-  function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value;
+  function onSelectChange(nextLocale: string) {
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- TypeScript will validate that only known `params`
@@ -33,22 +39,34 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <label
-      className={clsx(
-        "relative text-gray-400",
-        isPending && "transition-opacity [&:disabled]:opacity-30"
-      )}
-    >
-      <p className="sr-only">{label}</p>
-      <select
-        className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
+    <div className={`${isPending ? "opacity-50" : ""}`}>
+      <Label htmlFor="locale-select" className="sr-only">
+        {label}
+      </Label>
+      <Select
         defaultValue={defaultValue}
+        onValueChange={onSelectChange}
         disabled={isPending}
-        onChange={onSelectChange}
       >
-        {children}
-      </select>
-      <span className="pointer-events-none absolute right-2 top-[8px]">⌄</span>
-    </label>
+        <SelectTrigger
+          id="locale-select"
+          className="w-[180px] bg-transparent text-gray-400"
+        >
+          <SelectValue placeholder="Select language" />
+        </SelectTrigger>
+        <SelectContent>
+          {React.Children.map(children, (child) => {
+            if (React.isValidElement(child) && child.type === "option") {
+              return (
+                <SelectItem value={child.props.value}>
+                  {child.props.children}
+                </SelectItem>
+              );
+            }
+            return null;
+          })}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
