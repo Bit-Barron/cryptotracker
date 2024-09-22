@@ -29,7 +29,7 @@ export const MyPagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-50"
+        className="p-2 rounded-full hover:bg-indigo-600 disabled:opacity-50"
       >
         <ChevronLeft size={20} />
       </button>
@@ -44,7 +44,7 @@ export const MyPagination: React.FC<PaginationProps> = ({
                 className={`w-8 h-8 rounded-full ${
                   currentPage === number
                     ? "bg-blue-600 text-white"
-                    : "hover:bg-gray-200"
+                    : "hover:bg-blue-600"
                 }`}
               >
                 {number}
@@ -59,7 +59,7 @@ export const MyPagination: React.FC<PaginationProps> = ({
             className={`w-8 h-8 rounded-full ${
               currentPage === number
                 ? "bg-blue-600 text-white"
-                : "hover:bg-gray-200"
+                : "hover:bg-blue-500"
             }`}
           >
             {number}
@@ -70,7 +70,7 @@ export const MyPagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="p-2 rounded-full hover:bg-gray-200 disabled:opacity-50"
+        className="p-2 rounded-full hover:bg-indigo-600 disabled:opacity-50"
       >
         <ChevronRight size={10} />
       </button>
