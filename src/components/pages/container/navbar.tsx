@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   return (
     <nav className="bg-background shadow w-full x-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between h-16">
+      <div className="md:flex md:justify-between md:h-16">
         <div className="flex">
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
             {tabs.map((tab) => (
