@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CryptoTracker Pro
+
+CryptoTracker is a real-time cryptocurrency tracking application that provides up-to-date information on cryptocurrency prices, market caps, and more.
+
+## Features
+
+- Real-time cryptocurrency data tracking
+- Sorting and filtering options for cryptocurrencies
+- Pagination for easy navigation through large datasets
+- Responsive design for desktop and mobile devices
+- Dark mode support
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- next-themes for dark mode
+- Tanstack Query for data fetching
+- CoinGecko API for cryptocurrency data
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v14 or later)
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```
+   git clone (https://github.com/Bit-Barron/cryptotracker/)
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Navigate to the project directory:
+   ```
+   cd cryptotracker
+   ```
 
-## Learn More
+3. Install dependencies:
+   ```
+   npm install
+   ```
+   or if you're using yarn:
+   ```
+   yarn install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+### Running the Application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Start the development server:
+   ```
+   npm run dev
+   ```
+   or with yarn:
+   ```
+   yarn dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Open your browser and visit `http://localhost:3000`
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Data provided by [CoinGecko](https://www.coingecko.com/)
+- Icons by [Lucide](https://lucide.dev/)
+
+## Contact
+
+Barron - Discord: https://discord.com/invite/coding 
+
+Project Link: [https://github.com/yourusername/crypto-tracker-pro](https://github.com/Bit-Barron/cryptotracker/)
