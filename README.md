@@ -1,4 +1,4 @@
-# CryptoTracker Pro
+# CryptoTracker
 
 CryptoTracker is a real-time cryptocurrency tracking application that provides up-to-date information on cryptocurrency prices, market caps, and more.
 
