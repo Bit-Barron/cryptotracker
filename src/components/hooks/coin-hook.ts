@@ -1,15 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
-export const CoinHook = () => {
+export const CoinHook = (
+  sortOrder: string = "market_cap_desc",
+  page: number = 1
+) => {
   const params = useParams();
 
   const coinQuery = useQuery<CoinData[]>({
-    queryKey: ["coin"],
+    queryKey: ["coin", sortOrder, page],
     queryFn: async () => {
       const response = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false"
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=${sortOrder}&per_page=50&page=${page}&sparkline=false`
       );
+      console.log(page);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

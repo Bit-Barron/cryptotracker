@@ -24,3 +24,12 @@ export const getPriceData = (coin?: CoinIdData) => [
     value: coin?.market_data.price_change_percentage_1y_in_currency?.usd ?? 0,
   },
 ];
+
+export const sortOptions = [
+  { value: "market_cap_desc", label: "Market Cap Desc" },
+  { value: "market_cap_asc", label: "Market Cap Asc" },
+  { value: "volume_desc", label: "Volume Desc" },
+  { value: "volume_asc", label: "Volume Asc" },
+  { value: "id_desc", label: "ID Desc" },
+  { value: "id_asc", label: "ID Asc" },
+];
