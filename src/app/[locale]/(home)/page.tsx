@@ -27,7 +27,8 @@ import { useState } from "react";
 
 export default function CryptoTable() {
   const [sortOrder, setSortOrder] = useState("market_cap_desc");
-  const { coinQuery } = CoinHook(sortOrder);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { coinQuery } = CoinHook(sortOrder, currentPage);
   const { searchTerm, setSearchTerm } = searchStore();
   const router = useRouter();
   const t = useTranslations("HomePage");
@@ -37,6 +38,15 @@ export default function CryptoTable() {
       coin.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       coin.symbol?.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleSortChange = (newSortOrder: string) => {
+    setSortOrder(newSortOrder);
+    setCurrentPage(1); // Reset to first page when changing sort order
+  };
 
   return (
     <div className="container mx-auto p-4 space-y-4">
@@ -49,7 +59,7 @@ export default function CryptoTable() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-grow"
         />
-        <Select value={sortOrder} onValueChange={(s) => setSortOrder(s)}>
+        <Select value={sortOrder} onValueChange={handleSortChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
@@ -118,14 +128,14 @@ export default function CryptoTable() {
       </Table>
       <div className="mx-auto">
         <MyPagination
-          currentPage={0}
-          totalPages={0}
-          onPageChange={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          currentPage={currentPage}
+          totalPages={20}
+          onPageChange={handlePageChange}
         />
       </div>
-      {!coinQuery.data && (
+      {coinQuery.isLoading && <div>Loading...</div>}
+      {coinQuery.isError && <div>Error loading data</div>}
+      {!coinQuery.data && !coinQuery.isLoading && (
         <div className="flex justify-center items-center">No Coins</div>
       )}
     </div>
