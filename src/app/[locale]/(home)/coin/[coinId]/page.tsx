@@ -84,7 +84,7 @@ export default function CoinInfoPage() {
             </CardHeader>
             <CardContent>
               <ScrollArea className="h-[400px] w-full rounded-md border p-4">
-                <p className="mb-4">{coin?.description.en}</p>
+                <p className="mb-4">{coin?.description?.en}</p>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <h3 className="font-semibold">
