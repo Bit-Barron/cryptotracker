@@ -1,22 +1,21 @@
-import { fetchCoins, fetchCoinsId } from "@/lib/fetch-coins";
+import { fetchCoinsId } from "@/lib/fetch-coins";
 import getQueryClient from "@/lib/react-query";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export default async function CoinIdLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { coinId: string };
 }) {
   const queryClient = getQueryClient();
 
-  const initialCoins = await fetchCoins();
+  const coinId = params.coinId;
 
-  const firstCoinId = initialCoins[0]?.id;
-
-  queryClient.prefetchQuery({
-    queryKey: ["coin", "market_cap_desc", 1],
-    queryFn: async () => await fetchCoinsId(firstCoinId),
+  await queryClient.prefetchQuery({
+    queryKey: ["coin", coinId],
+    queryFn: async () => await fetchCoinsId(coinId),
   });
 
   return (
