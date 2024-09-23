@@ -55,7 +55,7 @@ export default function CoinInfoPage() {
                   {t("CoinData.currentPrice")}:
                 </p>
                 <p className="text-2xl font-bold">
-                  ${coin?.market_data.current_price.usd.toLocaleString()}
+                  ${coin?.market_data?.current_price.usd.toLocaleString()}
                 </p>
               </div>
               <div>
