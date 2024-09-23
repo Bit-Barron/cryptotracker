@@ -21,8 +21,10 @@ export default async function LocaleLayout({
 
   const firstCoinId = initialCoins[0]?.id;
   if (firstCoinId) {
-    const coinData = await fetchCoinData(firstCoinId);
-    queryClient.setQueryData(["coin", firstCoinId], coinData);
+    await queryClient.prefetchQuery({
+      queryKey: ["coin", firstCoinId],
+      queryFn: async () => await fetchCoinData(firstCoinId),
+    });
   }
 
   return (
