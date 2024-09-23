@@ -6,7 +6,7 @@ export const fetchCoins = async (sortOrder = "market_cap_desc", page = 1) => {
   return res.json();
 };
 
-export const fetchCoinData = async (coinId?: string): Promise<CoinIdData> => {
+export const fetchCoinsId = async (coinId?: string): Promise<CoinIdData> => {
   const response = await fetch(
     `https://api.coingecko.com/api/v3/coins/${coinId}`
   );

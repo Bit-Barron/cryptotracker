@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/pages/container/navbar";
 import QueryProvider from "@/components/providers/query-provider";
-import { fetchCoinData, fetchCoins } from "@/lib/fetch-coins";
+import { fetchCoins } from "@/lib/fetch-coins";
 import getQueryClient from "@/lib/react-query";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { NextIntlClientProvider } from "next-intl";
@@ -18,14 +18,6 @@ export default async function LocaleLayout({
 
   const initialCoins = await fetchCoins();
   queryClient.setQueryData(["coin", "market_cap_desc", 1], initialCoins);
-
-  const firstCoinId = initialCoins[0]?.id;
-  if (firstCoinId) {
-    await queryClient.prefetchQuery({
-      queryKey: ["coin", firstCoinId],
-      queryFn: async () => await fetchCoinData(firstCoinId),
-    });
-  }
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
