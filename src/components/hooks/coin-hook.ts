@@ -1,4 +1,4 @@
-import { fetchCoinData, fetchCoins } from "@/lib/fetch-coins";
+import { fetchCoins, fetchCoinsId } from "@/lib/fetch-coins";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
@@ -17,7 +17,7 @@ export const CoinHook = (
 
   const coinIdQuery = useQuery<CoinIdData>({
     queryKey: ["coin", params.coinId],
-    queryFn: () => fetchCoinData(),
+    queryFn: () => fetchCoinsId(),
     enabled: !!params.coinId,
     staleTime: 60000,
     refetchOnWindowFocus: false,
