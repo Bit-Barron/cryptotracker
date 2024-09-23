@@ -40,8 +40,8 @@ export default function CoinInfoPage() {
         <Card className="mb-8">
           <CardHeader className="flex flex-row items-center space-y-0 pb-2">
             <Avatar className="h-16 w-16 mr-4">
-              <AvatarImage src={coin?.image.large} alt={coin?.name} />
-              <AvatarFallback>{coin?.symbol.toUpperCase()}</AvatarFallback>
+              <AvatarImage src={coin?.image?.large} alt={coin?.name} />
+              <AvatarFallback>{coin?.symbol?.toUpperCase()}</AvatarFallback>
             </Avatar>
             <div>
               <CardTitle className="text-2xl">{coin?.name}</CardTitle>

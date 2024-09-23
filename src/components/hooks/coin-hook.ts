@@ -1,4 +1,4 @@
-import { fetchCoins } from "@/lib/fetch-coins";
+import { fetchCoinData, fetchCoins } from "@/lib/fetch-coins";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
@@ -17,15 +17,7 @@ export const CoinHook = (
 
   const coinIdQuery = useQuery<CoinIdData>({
     queryKey: ["coin", params.coinId],
-    queryFn: async () => {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/${params.coinId}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    },
+    queryFn: () => fetchCoinData(),
     enabled: !!params.coinId,
     staleTime: 60000,
     refetchOnWindowFocus: false,
