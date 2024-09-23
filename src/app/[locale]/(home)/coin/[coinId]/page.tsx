@@ -45,7 +45,7 @@ export default function CoinInfoPage() {
             </Avatar>
             <div>
               <CardTitle className="text-2xl">{coin?.name}</CardTitle>
-              <CardDescription>{coin?.symbol.toUpperCase()}</CardDescription>
+              <CardDescription>{coin?.symbol?.toUpperCase()}</CardDescription>
             </div>
           </CardHeader>
           <CardContent>

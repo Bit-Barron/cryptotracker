@@ -55,7 +55,7 @@ export const MarketData: React.FC<MarketDataProps> = ({ coin }) => {
               {/* Translated label */}
               <p className="text-xl font-bold">
                 {coin?.market_data.circulating_supply.toLocaleString()}{" "}
-                {coin?.symbol.toUpperCase()}
+                {coin?.symbol?.toUpperCase()}
               </p>
             </div>
             <div>
@@ -67,7 +67,7 @@ export const MarketData: React.FC<MarketDataProps> = ({ coin }) => {
                 {coin?.market_data.max_supply
                   ? coin?.market_data.max_supply.toLocaleString()
                   : "N/A"}{" "}
-                {coin?.symbol.toUpperCase()}
+                {coin?.symbol?.toUpperCase()}
               </p>
             </div>
           </div>
