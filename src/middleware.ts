@@ -4,8 +4,9 @@ import { locales } from "./config";
 export default createMiddleware({
   locales,
   defaultLocale: "en",
+  localePrefix: "never",
 });
 
 export const config = {
-  matcher: ["/", "/(de|en)/:path*"],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
