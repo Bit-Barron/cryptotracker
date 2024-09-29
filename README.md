@@ -26,6 +26,7 @@ CryptoTracker is a real-time cryptocurrency tracking application that provides u
 - Node.js (v14 or later)
 - bun
 
+
 ## Contact
 
 Barron - Discord: https://discord.com/invite/coding 
