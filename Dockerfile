@@ -16,6 +16,8 @@ COPY --from=deps /app/node_modules ./node_modules
 
 RUN npm run build
 
+
+
 FROM node:20-alpine AS prod
 
 WORKDIR /app
