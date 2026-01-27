@@ -4,6 +4,7 @@ CryptoTracker is a real-time cryptocurrency tracking application that provides u
 
 ## Features
 
+
 - Real-time cryptocurrency data tracking
 - Sorting and filtering options for cryptocurrencies
 - Pagination for easy navigation through large datasets
